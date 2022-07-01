@@ -1,0 +1,12 @@
+---
+skip_list:
+  - '106'
+  - experimental  # all rules tagged as experimental
+  - fqcn-builtins  # Use FQCN for builtin actions.
+  - meta-incorrect  # meta/main.yml default values should be changed.
+  - meta-no-info  # meta/main.yml should contain relevant info.
+
+
+mock_roles:
+  - austincloudguru.vault
+  - austincloudguru.consul

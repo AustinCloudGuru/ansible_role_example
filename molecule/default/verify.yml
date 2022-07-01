@@ -1,0 +1,24 @@
+---
+- name: Verify
+  hosts: all
+  gather_facts: false
+  vars:
+    vault_service: vault.service
+    consul_service: consul.service
+  vars_files:
+    - "../../defaults/main.yml"
+  tasks:
+    - name: Get the Groups
+      ansible.builtin.getent:
+        database: group
+
+    - name: Get the Users
+      ansible.builtin.getent:
+        database: passwd
+
+    - name: Assert Results
+      ansible.builtin.assert:
+        that:
+          - getent_passwd.consul is defined
+          - getent_group.consul is defined
+        quiet: true
